@@ -7,10 +7,17 @@
  */
 
 import acm.util.*;
+
+import java.io.BufferedReader;
 import java.util.*;
 
 public class NameSurferEntry implements NameSurferConstants {
-
+	
+	/**
+	 * instant variables
+	 */
+	
+	private ArrayList<String> entry;
 /* Constructor: NameSurferEntry(line) */
 /**
  * Creates a new NameSurferEntry from a data line as it appears
@@ -19,7 +26,10 @@ public class NameSurferEntry implements NameSurferConstants {
  * decade.
  */
 	public NameSurferEntry(String line) {
-		// You fill this in //
+		StringTokenizer tokenizer = new StringTokenizer(line);
+		while (tokenizer.hasMoreTokens()) {
+			entry.add(tokenizer.nextToken());
+		}
 	}
 
 /* Method: getName() */
@@ -27,8 +37,7 @@ public class NameSurferEntry implements NameSurferConstants {
  * Returns the name associated with this entry.
  */
 	public String getName() {
-		// You need to turn this stub into a real implementation //
-		return null;
+		return entry.get(0);
 	}
 
 /* Method: getRank(decade) */
@@ -40,8 +49,7 @@ public class NameSurferEntry implements NameSurferConstants {
  * not appear in a decade, the rank value is 0.
  */
 	public int getRank(int decade) {
-		// You need to turn this stub into a real implementation //
-		return 0;
+		return Integer.parseInt(entry.get(decade+1));
 	}
 
 /* Method: toString() */
@@ -50,7 +58,11 @@ public class NameSurferEntry implements NameSurferConstants {
  * NameSurferEntry.
  */
 	public String toString() {
-		// You need to turn this stub into a real implementation //
+		String rank="";
+		for(int i=1; i<entry.size(); i++) {
+			rank+=entry.get(i);
+		}
+		String test=entry.get(0)+" ["+rank+
 		return "";
 	}
 }
