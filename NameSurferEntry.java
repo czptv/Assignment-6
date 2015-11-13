@@ -62,8 +62,7 @@ public class NameSurferEntry implements NameSurferConstants {
 		for(int i=1; i<entry.size(); i++) {
 			rank+=entry.get(i);
 		}
-		String test=entry.get(0)+" ["+rank+
-		return "";
+		return entry.get(0)+" ["+rank+"]";
 	}
 }
 
