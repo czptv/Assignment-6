@@ -9,15 +9,30 @@ import acm.program.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class NameSurfer extends Program implements NameSurferConstants {
+public class NameSurfer extends ConsoleProgram implements NameSurferConstants {
 
+	/**
+	 * instant constants
+	 */
+	
+	JTextField nameField;
+	
 /* Method: init() */
 /**
  * This method has the responsibility for reading in the data base
  * and initializing the interactors at the top of the window.
  */
 	public void init() {
-	    // You fill this in, along with any helper methods //
+		nameField=new JTextField(20);
+		
+		add(new JLabel("Name"), NORTH);
+		add(nameField,NORTH);
+		nameField.setActionCommand("Graph");
+		nameField.addActionListener(this);
+		add(new JButton("Graph"),NORTH);
+		add(new JButton("Clear"),NORTH);
+		
+		addActionListeners();
 	}
 
 /* Method: actionPerformed(e) */
@@ -27,6 +42,11 @@ public class NameSurfer extends Program implements NameSurferConstants {
  * button actions.
  */
 	public void actionPerformed(ActionEvent e) {
-		// You fill this in //
+		String cmd=e.getActionCommand();
+		if(cmd.equals("Graph")) {
+			println("Graph: "+nameField.getText());
+		} else if(cmd.equals("Clear")) {
+			println("Clear");
+		}
 	}
 }
