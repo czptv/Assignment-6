@@ -13,46 +13,9 @@ import javax.swing.*;
 
 public class ConsoleTest extends ConsoleProgram {
 	public void init() {
-		setLayout(new GridLayout(1, 3));
-		// Note: console is first element of our layout
-		leftCanvas = new GCanvas();
-		add(leftCanvas);
-		rightCanvas = new GCanvas();
-		add(rightCanvas);
-		textField = new JTextField(10);
-		add(new JLabel("Text"), SOUTH);
-		add(textField, SOUTH);
-		//textField.addActionListener(this);
-		add(new JButton("Draw left"), SOUTH);
-		add(new JButton("Draw right"), SOUTH);
-		addActionListeners();
+		NameSurferEntry entry = new NameSurferEntry("Sam 58 69 99 131 168 236 278 380 467 408 466");
+		println(entry.getName());
+		println("The rank is: "+entry.getRank(3));
+		println(entry.toString());
 	}
-	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == textField) {
-			println("You typed: " + textField.getText());
-		}
-		String cmd = e.getActionCommand();
-		if (cmd.equals("Draw left")) {
-			leftCanvas.add(createFilledRect(), 0, leftY);
-			leftY += SPACER;
-		} else if (cmd.equals("Draw right")) {
-			rightCanvas.add(createFilledRect(), 0, rightY);
-			rightY += SPACER;
-		}
-	}
-	private GRect createFilledRect() {
-		// Yes, we should have made the 50 and 20 constants...
-		GRect rect = new GRect(50, 20);
-		rect.setFilled(true);
-		return rect;
-	}
-	/* Constants */
-
-	private static double SPACER = 30;
-	/* Private instance variables */
-	private GCanvas leftCanvas;
-	private GCanvas rightCanvas;
-	private JTextField textField;
-	private double leftY = 0;
-	private double rightY = 0;
 }
