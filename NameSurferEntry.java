@@ -7,11 +7,12 @@
  */
 
 import acm.util.*;
+import acm.program.*;
 
 import java.io.BufferedReader;
 import java.util.*;
 
-public class NameSurferEntry implements NameSurferConstants {
+public class NameSurferEntry extends ConsoleProgram implements NameSurferConstants {
 	
 	/**
 	 * instant variables
