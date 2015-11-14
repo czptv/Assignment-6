@@ -212,15 +212,25 @@ public class NameSurferGraphExtension extends GCanvas
 		}
 		label.setColor(color);
 		label.setFont("Times-12");
+		
 		//highlight highest and lowest rank
 		int highestRank=1000;
-		int lowestRank=1;
+		int lowestRank;
+		int lowestRank1=1;
+		int lowestRank2=1;
 		for (int i=1; i<12; i++) {
 			int rank=names.get(nameOrder).getRank(i);
 			if(rank!=0) {
 				highestRank=Math.min(highestRank, rank);
+			} else {
+				lowestRank2=0;
 			}
-			lowestRank=Math.max(lowestRank, rank);
+			lowestRank1=Math.max(lowestRank1, rank);
+		}
+		if(lowestRank2==0) {
+			lowestRank=0;
+		} else {
+			lowestRank=lowestRank1;
 		}
 		if(names.get(nameOrder).getRank(decadeOrder)==highestRank || names.get(nameOrder).getRank(decadeOrder)==lowestRank) {
 			label.setFont("-Bold");
