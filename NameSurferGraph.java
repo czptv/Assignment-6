@@ -27,7 +27,6 @@ public class NameSurferGraph extends GCanvas
 	 */
 	
 	private ArrayList<NameSurferEntry> names;
-	private int unit=(getHeight()-2*space)/1000;
 	
 	/**
 	* Creates a new NameSurferGraph object that displays the data.
@@ -116,6 +115,7 @@ public class NameSurferGraph extends GCanvas
 		removeAll();
 		initialize();
 		int col=getWidth()/11;
+		int unit=(getHeight()-2*space)/1000;
 		for (int i=0; i<names.size();i++) { //for names
 			for (int j=1; j<11;i++) { //for years
 				//draw line
