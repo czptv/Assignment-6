@@ -117,11 +117,11 @@ public class NameSurferGraph extends GCanvas
 	 */
 	private Color getColor(int order) {
 		Color color;
-		if (order%4==1) {
+		if (order%4==0) {
 			color=Color.black;
-		} else if (order%4==2) {
+		} else if (order%4==1) {
 			color=Color.red;
-		} else if (order%4==3) {
+		} else if (order%4==2) {
 			color=Color.blue;
 		} else {
 			color=Color.magenta;
