@@ -159,7 +159,7 @@ public class NameSurferGraphExtension extends GCanvas
 	}
 	
 	private void drawDot(double x, double y, int nameOrder, Color color) {
-		int i=3;
+		int i=2;
 		GOval circle=new GOval(x-i,y-i,2*i,2*i);
 		circle.setColor(color);
 		GRect rect=new GRect(x-i,y-i,2*i,2*i);
