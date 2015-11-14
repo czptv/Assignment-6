@@ -57,8 +57,8 @@ public class NameSurferDataBase implements NameSurferConstants {
 		
 		//search for the name in the database
 		String n=nameDataBase.get(nameNCS); 
-		if (n==null) {
-			return null;
+		if (n==null) { //if here doesn't return null, the program will stop if user 
+			return null; //enter a name that doesn't exist in the data base.
 		} else {
 			return new NameSurferEntry(n);
 		}
