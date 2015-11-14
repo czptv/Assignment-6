@@ -111,6 +111,7 @@ public class NameSurferGraph extends GCanvas
 	/**
 	 * draw label and lines
 	 */
+	
 	private void drawLabelAndLine(int nameOrder, int decadeOrder, double unit, double col) {
 		//draw line
 		double x1=col*(decadeOrder-1);
@@ -129,6 +130,7 @@ public class NameSurferGraph extends GCanvas
 	 * @param unit: the height of one unit out of 1000 of the middle part of the columns
 	 * @return value of y
 	 */
+	
 	private double checkRank(int nameOrder, int decadeOrder, double unit){
 		double rank=names.get(nameOrder).getRank(decadeOrder);
 		double y;
@@ -139,15 +141,25 @@ public class NameSurferGraph extends GCanvas
 		}
 		return y;
 	}
-	private void drawLabel(double x1, double y1, int nameOrder, int decadeOrder) {
+	
+	/**
+	 * draw Label
+	 * @param x: x parameter of the label
+	 * @param y: relative to y parameter of the label
+	 * @param nameOrder: order of name in the ArrayList
+	 * @param decadeOrder: the decade away from the starting decade
+	 */
+	
+	private void drawLabel(double x, double y, int nameOrder, int decadeOrder) {
 		GLabel label;
 		if (names.get(nameOrder).getRank(decadeOrder)==0) {
 			label=new GLabel(names.get(nameOrder).getName()+" *");
 		} else {
 			label=new GLabel(names.get(nameOrder).getName()+" "+names.get(nameOrder).getRank(decadeOrder));
 		}
-		add(label,x1,y1-label.getAscent());
+		add(label,x,y-label.getAscent());
 	}
+	
 	/* Implementation of the ComponentListener interface */
 	public void componentHidden(ComponentEvent e) { }
 	public void componentMoved(ComponentEvent e) { }
