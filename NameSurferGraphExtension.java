@@ -229,8 +229,8 @@ public class NameSurferGraphExtension extends GCanvas
 		while (label.getWidth()>col) {
 			font--;
 		}
-		String fontSize=Integer.toString(font);
-		label.setFont("Times-"+fontSize);
+		String fontSet="Times-"+Integer.toString(font);
+		label.setFont(fontSet);
 	}
 	
 	
