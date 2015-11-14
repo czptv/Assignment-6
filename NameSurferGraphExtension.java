@@ -214,7 +214,7 @@ public class NameSurferGraphExtension extends GCanvas
 			label=new GLabel(names.get(nameOrder).getName()+" "+names.get(nameOrder).getRank(decadeOrder));
 		}
 		label.setColor(color);
-		adjustFont(label);
+		//adjustFont(label);
 		highlightRank(nameOrder, decadeOrder, label);
 		add(label,x,y);
 	}
