@@ -10,11 +10,14 @@
  */
 
 import acm.util.*;
+
 import java.util.*;
 import java.io.*;
 
 public class NameSurferDataBase implements NameSurferConstants {
 	
+	//instant variables
+	private HashMap <String, String> nameDataBase;
 /* Constructor: NameSurferDataBase(filename) */
 /**
  * Creates a new NameSurferDataBase and initializes it using the
@@ -23,14 +26,18 @@ public class NameSurferDataBase implements NameSurferConstants {
  * occurs as the file is being read.
  */
 	public NameSurferDataBase(String filename) {
+		nameDataBase=new HashMap <String, String> ();
 		try {
 			BufferedReader rd=new BufferedReader(new FileReader(filename));
 			while (true) {
 				String line=rd.readLine();
-				
+				if (line==null) break;
+				StringTokenizer tokenizer = new StringTokenizer(line);
+				nameDataBase.put(tokenizer.nextToken(), line);
 			}
+			rd.close();
 		} catch (IOException ex) {
-			
+			throw new ErrorException (ex);
 		}
 	}
 	
@@ -41,8 +48,7 @@ public class NameSurferDataBase implements NameSurferConstants {
  * method returns null.
  */
 	public NameSurferEntry findEntry(String name) {
-		// You need to turn this stub into a real implementation //
-		return null;
+		return new NameSurferEntry(nameDataBase.get(name));
 	}
 }
 

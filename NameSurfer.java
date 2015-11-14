@@ -15,8 +15,8 @@ public class NameSurfer extends ConsoleProgram implements NameSurferConstants {
 	 * instant constants
 	 */
 	
-	JTextField nameField;
-	
+	private JTextField nameField;
+	private NameSurferDataBase nameDataBase;
 /* Method: init() */
 /**
  * This method has the responsibility for reading in the data base
@@ -24,6 +24,7 @@ public class NameSurfer extends ConsoleProgram implements NameSurferConstants {
  */
 	public void init() {
 		nameField=new JTextField(20);
+		nameDataBase=new NameSurferDataBase("names-data.txt");
 		
 		add(new JLabel("Name"), NORTH);
 		add(nameField,NORTH);
@@ -44,7 +45,7 @@ public class NameSurfer extends ConsoleProgram implements NameSurferConstants {
 	public void actionPerformed(ActionEvent e) {
 		String cmd=e.getActionCommand();
 		if(cmd.equals("Graph")) {
-			println("Graph: "+nameField.getText());
+			println(nameDataBase.findEntry(nameField.getText()).toString());
 		} else if(cmd.equals("Clear")) {
 			println("Clear");
 		}
