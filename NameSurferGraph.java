@@ -52,18 +52,17 @@ public class NameSurferGraph extends GCanvas
 		add(new GLine(0,getHeight()-space,getWidth(),getHeight()-space));
 		
 		//draw labels
-		double y=getHeight()-space;
-		add(new GLabel("1900",0,y));
-		add(new GLabel("1910",col,y));
-		add(new GLabel("1920",col*2,y));
-		add(new GLabel("1930",col*3,y));
-		add(new GLabel("1940",col*4,y));
-		add(new GLabel("1950",col*5,y));
-		add(new GLabel("1960",col*6,y));
-		add(new GLabel("1970",col*7,y));
-		add(new GLabel("1980",col*8,y));
-		add(new GLabel("1990",col*9,y));
-		add(new GLabel("2000",col*10,y));
+		add(new GLabel("1900",0,getHeight()));
+		add(new GLabel("1910",col,getHeight()));
+		add(new GLabel("1920",col*2,getHeight()));
+		add(new GLabel("1930",col*3,getHeight()));
+		add(new GLabel("1940",col*4,getHeight()));
+		add(new GLabel("1950",col*5,getHeight()));
+		add(new GLabel("1960",col*6,getHeight()));
+		add(new GLabel("1970",col*7,getHeight()));
+		add(new GLabel("1980",col*8,getHeight()));
+		add(new GLabel("1990",col*9,getHeight()));
+		add(new GLabel("2000",col*10,getHeight()));
 	}
 	/**
 	* Clears the list of name surfer entries stored inside this class.
