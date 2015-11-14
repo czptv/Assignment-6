@@ -106,7 +106,7 @@ public class NameSurferGraph extends GCanvas
 			}
 			//draw the last label
 			double y=checkRank(i,11,unit);
-			drawLabel(col*10,y,i,11);
+			drawLabel(col*10,y,i,11,getColor(i));
 		}
 	}
 	
