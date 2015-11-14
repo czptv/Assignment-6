@@ -212,8 +212,15 @@ public class NameSurferGraphExtension extends GCanvas
 		}
 		label.setColor(color);
 		label.setFont("Times-12");
-		
-		//highlight highest and lowest rank
+		highlightRank(nameOrder, decadeOrder, label);
+		add(label,x,y);
+	}
+	
+	/**
+	 * highlight highest and lowest rank
+	 */
+	
+	private void highlightRank(int nameOrder, int decadeOrder, GLabel label) {
 		int highestRank=1000;
 		int lowestRank;
 		int lowestRank1=1;
@@ -235,7 +242,6 @@ public class NameSurferGraphExtension extends GCanvas
 		if(names.get(nameOrder).getRank(decadeOrder)==highestRank || names.get(nameOrder).getRank(decadeOrder)==lowestRank) {
 			label.setFont("-Bold");
 		}
-		add(label,x,y);
 	}
 	
 	/* Implementation of the ComponentListener interface */
