@@ -24,6 +24,7 @@ public class NameSurferEntry implements NameSurferConstants {
  * decade.
  */
 	public NameSurferEntry(String line) {
+		entry=new ArrayList<String>();
 		StringTokenizer tokenizer = new StringTokenizer(line);
 		while (tokenizer.hasMoreTokens()) {
 			entry.add(tokenizer.nextToken());
