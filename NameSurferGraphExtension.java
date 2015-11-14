@@ -233,6 +233,8 @@ public class NameSurferGraphExtension extends GCanvas
 			label.setFont("Times-12");
 		} else if(col>50) {
 			label.setFont("Times-10");
+		} else if(col>30){
+			label.setFont("Times-7");
 		} else {
 			label.setFont("Times-5");
 		}
