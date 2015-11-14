@@ -42,7 +42,7 @@ public class NameSurferGraph extends GCanvas
 	 */
 	private void initialize() {
 		//draw lines
-		int col=getWidth()/11;
+		double col=getWidth()/11;
 		//vertical lines
 		for (int i=1; i<11;i++) {
 			add(new GLine(col*i,0,col*i,getHeight()));
@@ -52,7 +52,7 @@ public class NameSurferGraph extends GCanvas
 		add(new GLine(0,getHeight()-space,getWidth(),getHeight()-space));
 		
 		//draw labels
-		int y=getHeight()-space;
+		double y=getHeight()-space;
 		add(new GLabel("1900",0,y));
 		add(new GLabel("1910",col,y));
 		add(new GLabel("1920",col*2,y));
@@ -114,15 +114,15 @@ public class NameSurferGraph extends GCanvas
 	public void update() {
 		removeAll();
 		initialize();
-		int col=getWidth()/11;
-		int unit=(getHeight()-2*space)/1000;
+		double col=getWidth()/11;
+		double unit=(getHeight()-2*space)/1000.0;
 		for (int i=0; i<names.size();i++) { //for names
 			for (int j=1; j<11;i++) { //for years
 				//draw line
-				int x1=col*(j-1);
-				int y1=space+unit*names.get(i).getRank(j);
-				int x2=col*j;
-				int y2=space+unit*names.get(i).getRank(j+1);
+				double x1=col*(j-1);
+				double y1=space+unit*names.get(i).getRank(j);
+				double x2=col*j;
+				double y2=space+unit*names.get(i).getRank(j+1);
 				add(new GLine(x1,y1,x2,y2));
 				//draw label
 				GLabel label=new GLabel(names.get(i).getName()+" "+names.get(i).getRank(j));
