@@ -72,24 +72,6 @@ public class NameSurferGraph extends GCanvas
 		while(names.isEmpty()) {
 			names.remove(0);
 		}
-		/* int col=getWidth()/11;
-		 * for (int i=0; i<names.size();i++) { //for names
-			for (int j=1; j<11;i++) { //for years
-				int x1=col*(j-1);
-				int y1=space+unit*names.get(i).getRank(j-1);
-				for (int k=0; k<2;k++) { //check and remove both line and label
-					GObject obj=getElementAt(x1,y1);
-					if(obj!=null) {
-						remove(obj);
-					}
-				}
-			}
-			//remove the last label
-			GObject obj=getElementAt(col*10,space+unit*names.get(i).getRank(10));
-			if(obj!=null) {
-				remove(obj);
-			}
-		}*/
 	}
 	
 	
@@ -117,24 +99,55 @@ public class NameSurferGraph extends GCanvas
 		double col=getWidth()/11;
 		double unit=(getHeight()-2*space)/1000.0;
 		for (int i=0; i<names.size();i++) { //for names
-			for (int j=1; j<11;j++) { //for years
-				//draw line
-				double x1=col*(j-1);
-				double y1=space+unit*names.get(i).getRank(j);
-				double x2=col*j;
-				double y2=space+unit*names.get(i).getRank(j+1);
-				add(new GLine(x1,y1,x2,y2));
-				//draw label
-				GLabel label=new GLabel(names.get(i).getName()+" "+names.get(i).getRank(j));
-				add(label,x1,y1-label.getAscent());
+			for (int j=1; j<11;j++) { //for decade
+				drawLabelAndLine(i,j,unit,col);
 			}
 			//draw the last label
-			GLabel label=new GLabel(names.get(1).getName()+" "+names.get(i).getRank(11));
-			add(label,col*10,space+unit*names.get(i).getRank(11)-label.getAscent());
+			double y=checkRank(i,11,unit);
+			drawLabel(col*10,y,i,11);
 		}
 	}
 	
+	/**
+	 * draw label and lines
+	 */
+	private void drawLabelAndLine(int nameOrder, int decadeOrder, double unit, double col) {
+		//draw line
+		double x1=col*(decadeOrder-1);
+		double x2=col*decadeOrder;
+		double y1=checkRank(nameOrder, decadeOrder, unit);
+		double y2=checkRank(nameOrder, decadeOrder+1, unit);
+		add(new GLine(x1,y1,x2,y2));
+		//draw label
+		drawLabel(x1,y1,nameOrder, decadeOrder);
+	}
 	
+	/**
+	 * check whether the rank is 0
+	 * @param nameOrder: order of name in the ArrayList
+	 * @param decadeOrder: the decade away from the starting decade
+	 * @param unit: the height of one unit out of 1000 of the middle part of the columns
+	 * @return value of y
+	 */
+	private double checkRank(int nameOrder, int decadeOrder, double unit){
+		double rank=names.get(nameOrder).getRank(decadeOrder);
+		double y;
+		if (rank!=0) {
+			y=space+unit*rank;
+		} else {
+			y=getHeight()-space;
+		}
+		return y;
+	}
+	private void drawLabel(double x1, double y1, int nameOrder, int decadeOrder) {
+		GLabel label;
+		if (names.get(nameOrder).getRank(decadeOrder)==0) {
+			label=new GLabel(names.get(nameOrder).getName()+" *");
+		} else {
+			label=new GLabel(names.get(nameOrder).getName()+" "+names.get(nameOrder).getRank(decadeOrder));
+		}
+		add(label,x1,y1-label.getAscent());
+	}
 	/* Implementation of the ComponentListener interface */
 	public void componentHidden(ComponentEvent e) { }
 	public void componentMoved(ComponentEvent e) { }
