@@ -70,31 +70,7 @@ public class NameSurferGraphExtension extends GCanvas
 		add(new GLabel("1990",col*9,getHeight()));
 		add(new GLabel("2000",col*10,getHeight()));
 	}
-	
-	/**
-	 * delete the last entry that is stored.
-	 */
-	
-	public void delete() {
-		if (!names.isEmpty()) {
-			names.remove(names.size()-1);
-		}
-		delete=true;
-	}
-	
-	/**
-	 * make sure the color display order doesn't change even if the 
-	 * player remove one entry
-	 */
-	
-	private int maintainColor(int i) {
-		int order=i;
-		if (delete==true) {
-			order+=1;
-		}
-		delete=false;
-		return order;
-	}
+
 	
 	/**
 	* Clears the list of name surfer entries stored inside this class.
@@ -152,7 +128,6 @@ public class NameSurferGraphExtension extends GCanvas
 	 */
 	
 	private Color getColor(int order) {
-		order=maintainColor(order);
 		Color color;
 		if (order%4==0) {
 			color=Color.black;
@@ -239,9 +214,25 @@ public class NameSurferGraphExtension extends GCanvas
 			label=new GLabel(names.get(nameOrder).getName()+" "+names.get(nameOrder).getRank(decadeOrder));
 		}
 		label.setColor(color);
-		label.setFont("Times-12");
+		adjustFont(label);
 		highlightRank(nameOrder, decadeOrder, label);
 		add(label,x,y);
+	}
+	
+	/**
+	 * adjust the font as user adjust the window size
+	 */
+	
+	private void adjustFont(GLabel label) {
+		int font;
+		double col=getWidth()/11;
+		for (int i=0; i<20; i++) {
+			if (label.getWidth()<col && label.getWidth()>col-5) {
+				font=i;
+				break;
+			}
+		}
+		label.setFont("Times-font");
 	}
 	
 	/**
