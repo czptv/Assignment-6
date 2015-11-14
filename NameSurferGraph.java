@@ -10,6 +10,7 @@
 import acm.graphics.*;
 import acm.gui.*;
 import java.awt.event.*;
+import java.awt.color.*;
 import java.util.*;
 import java.awt.*;
 
@@ -80,12 +81,12 @@ public class NameSurferGraph extends GCanvas
 	* Note that this method does not actually draw the graph, but
 	* simply stores the entry; the graph is drawn by calling update.
 	*/
+	
 	public void addEntry(NameSurferEntry entry) {
 		if (entry!=null) {
 			names.add(entry);
 		}
 	}
-	
 	
 	/**
 	* Updates the display image by deleting all the graphical objects
@@ -101,7 +102,7 @@ public class NameSurferGraph extends GCanvas
 		double unit=(getHeight()-2*space)/1000.0;
 		for (int i=0; i<names.size();i++) { //for names
 			for (int j=1; j<11;j++) { //for decade
-				drawLabelAndLine(i,j,unit,col);
+				drawLabelAndLine(i,j,unit,col,getColor(i));
 			}
 			//draw the last label
 			double y=checkRank(i,11,unit);
@@ -110,18 +111,39 @@ public class NameSurferGraph extends GCanvas
 	}
 	
 	/**
+	 * decide the color of the line and the labels
+	 * @param order: the place this entry is in the ArrayList
+	 * @return the color of the line and the labels
+	 */
+	private Color getColor(int order) {
+		Color color;
+		if (order%4==1) {
+			color=Color.black;
+		} else if (order%4==2) {
+			color=Color.red;
+		} else if (order%4==3) {
+			color=Color.blue;
+		} else {
+			color=Color.magenta;
+		}
+		return color;
+	}
+	
+	/**
 	 * draw label and lines
 	 */
 	
-	private void drawLabelAndLine(int nameOrder, int decadeOrder, double unit, double col) {
+	private void drawLabelAndLine(int nameOrder, int decadeOrder, double unit, double col, Color color) {
 		//draw line
 		double x1=col*(decadeOrder-1);
 		double x2=col*decadeOrder;
 		double y1=checkRank(nameOrder, decadeOrder, unit);
 		double y2=checkRank(nameOrder, decadeOrder+1, unit);
-		add(new GLine(x1,y1,x2,y2));
+		GLine line=new GLine(x1,y1,x2,y2);
+		line.setColor(color);
+		add(line);
 		//draw label
-		drawLabel(x1,y1,nameOrder, decadeOrder);
+		drawLabel(x1, y1, nameOrder, decadeOrder, color);
 	}
 	
 	/**
@@ -151,13 +173,14 @@ public class NameSurferGraph extends GCanvas
 	 * @param decadeOrder: the decade away from the starting decade
 	 */
 	
-	private void drawLabel(double x, double y, int nameOrder, int decadeOrder) {
+	private void drawLabel(double x, double y, int nameOrder, int decadeOrder, Color color) {
 		GLabel label;
 		if (names.get(nameOrder).getRank(decadeOrder)==0) {
 			label=new GLabel(names.get(nameOrder).getName()+" *");
 		} else {
 			label=new GLabel(names.get(nameOrder).getName()+" "+names.get(nameOrder).getRank(decadeOrder));
 		}
+		label.setColor(color);
 		add(label,x,y);
 	}
 	
