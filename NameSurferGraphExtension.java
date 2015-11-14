@@ -28,6 +28,7 @@ public class NameSurferGraphExtension extends GCanvas
 	 */
 	
 	private ArrayList<NameSurferEntry> names;
+	private boolean delete;
 	
 	/**
 	* Creates a new NameSurferGraph object that displays the data.
@@ -36,6 +37,7 @@ public class NameSurferGraphExtension extends GCanvas
 	public NameSurferGraphExtension() {
 		addComponentListener(this);
 		names = new ArrayList<NameSurferEntry>();
+		delete=false;
 		initialize();
 	}
 	
@@ -73,11 +75,11 @@ public class NameSurferGraphExtension extends GCanvas
 	 * delete the last entry that is stored.
 	 */
 	
-	public boolean delete() {
+	public void delete() {
 		if (!names.isEmpty()) {
 			names.remove(names.size()-1);
 		}
-		return true;
+		delete=true;
 	}
 	
 	/**
@@ -87,9 +89,10 @@ public class NameSurferGraphExtension extends GCanvas
 	
 	private int maintainColor(int i) {
 		int order=i;
-		if (delete()==true) {
+		if (delete==true) {
 			order+=1;
 		}
+		delete=false;
 		return order;
 	}
 	
