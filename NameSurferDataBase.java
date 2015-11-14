@@ -48,7 +48,20 @@ public class NameSurferDataBase implements NameSurferConstants {
  * method returns null.
  */
 	public NameSurferEntry findEntry(String name) {
-		return new NameSurferEntry(nameDataBase.get(name));
+		//not case sensitive (NCS)
+		String nameNCS="";
+		nameNCS+=Character.toUpperCase(name.charAt(0));
+		for (int i=1; i<name.length(); i++) {
+			nameNCS+=Character.toLowerCase(name.charAt(i));
+		}
+		
+		//search for the name in the database
+		String n=nameDataBase.get(nameNCS); 
+		if (n==null) {
+			return null;
+		} else {
+			return new NameSurferEntry(n);
+		}
 	}
 }
 
