@@ -211,6 +211,19 @@ public class NameSurferGraphExtension extends GCanvas
 			label=new GLabel(names.get(nameOrder).getName()+" "+names.get(nameOrder).getRank(decadeOrder));
 		}
 		label.setColor(color);
+		//highlight highest and lowest rank
+		int highestRank=1000;
+		int lowestRank=1;
+		for (int i=1; i<12; i++) {
+			int rank=names.get(nameOrder).getRank(i);
+			if(rank!=0) {
+				highestRank=Math.min(highestRank, rank);
+			}
+			lowestRank=Math.max(lowestRank, rank);
+		}
+		if(names.get(nameOrder).getRank(decadeOrder)==highestRank || names.get(nameOrder).getRank(decadeOrder)==lowestRank) {
+			label.setFont("Bold");
+		}
 		add(label,x,y);
 	}
 	
