@@ -73,8 +73,23 @@ public class NameSurferGraphExtension extends GCanvas
 	 * delete the last entry that is stored.
 	 */
 	
-	private void delete() {
-		
+	public boolean delete() {
+		if (!names.isEmpty()) {
+			names.remove(names.size()-1);
+		}
+		return true;
+	}
+	
+	/**
+	 * make sure the color display order doesn't change even if the 
+	 * player remove one entry
+	 */
+	
+	private int maintainColor(int i) {
+		if (delete()==true) {
+			i+=1;
+		}
+		return i;
 	}
 	
 	/**
@@ -133,6 +148,7 @@ public class NameSurferGraphExtension extends GCanvas
 	 */
 	
 	private Color getColor(int order) {
+		order=maintainColor(order);
 		Color color;
 		if (order%4==0) {
 			color=Color.black;

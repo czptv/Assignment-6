@@ -56,7 +56,7 @@ public class NameSurferExtension extends Program implements NameSurferConstants 
 			graph.clear();
 			graph.update();
 		} else if(cmd.equals("Delete")) {
-			graph.
+			graph.delete();
 			graph.update();
 		}
 	}
