@@ -117,7 +117,7 @@ public class NameSurferGraph extends GCanvas
 		double col=getWidth()/11;
 		double unit=(getHeight()-2*space)/1000.0;
 		for (int i=0; i<names.size();i++) { //for names
-			for (int j=1; j<11;i++) { //for years
+			for (int j=1; j<11;j++) { //for years
 				//draw line
 				double x1=col*(j-1);
 				double y1=space+unit*names.get(i).getRank(j);
