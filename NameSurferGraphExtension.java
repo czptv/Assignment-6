@@ -70,6 +70,14 @@ public class NameSurferGraphExtension extends GCanvas
 	}
 	
 	/**
+	 * delete the last entry that is stored.
+	 */
+	
+	private void delete() {
+		
+	}
+	
+	/**
 	* Clears the list of name surfer entries stored inside this class.
 	*/
 	
