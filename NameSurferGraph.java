@@ -63,7 +63,7 @@ public class NameSurferGraph extends GCanvas
 		add(new GLabel("1970",col*7,y));
 		add(new GLabel("1980",col*8,y));
 		add(new GLabel("1990",col*9,y));
-		add(new GLabel("2000",col*10,y));		
+		add(new GLabel("2000",col*10,y));
 	}
 	/**
 	* Clears the list of name surfer entries stored inside this class.
