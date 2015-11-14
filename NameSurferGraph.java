@@ -120,17 +120,17 @@ public class NameSurferGraph extends GCanvas
 			for (int j=1; j<11;i++) { //for years
 				//draw line
 				int x1=col*(j-1);
-				int y1=space+unit*names.get(i).getRank(j-1);
+				int y1=space+unit*names.get(i).getRank(j);
 				int x2=col*j;
-				int y2=space+unit*names.get(i).getRank(j);
+				int y2=space+unit*names.get(i).getRank(j+1);
 				add(new GLine(x1,y1,x2,y2));
 				//draw label
-				GLabel label=new GLabel(names.get(i).getName()+" "+names.get(i).getRank(j-1));
+				GLabel label=new GLabel(names.get(i).getName()+" "+names.get(i).getRank(j));
 				add(label,x1,y1-label.getHeight());
 			}
 			//draw the last label
-			GLabel label=new GLabel(names.get(1).getName()+" "+names.get(i).getRank(10));
-			add(label,col*10,space+unit*names.get(i).getRank(10)-label.getHeight());
+			GLabel label=new GLabel(names.get(1).getName()+" "+names.get(i).getRank(11));
+			add(label,col*10,space+unit*names.get(i).getRank(11)-label.getHeight());
 		}
 	}
 	
