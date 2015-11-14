@@ -110,8 +110,10 @@ public class NameSurferGraphExtension extends GCanvas
 			for (int j=1; j<11;j++) { //for decade
 				drawLabelDotAndLine(i,j,unit,col,getColor(i));
 			}
-			//draw the last label
 			double y=checkRank(i,11,unit);
+			//draw the last dot
+			drawDot(col*10, y, i, getColor(i));
+			//draw the last label
 			drawLabel(col*10,y,i,11,getColor(i));
 		}
 	}
@@ -157,7 +159,7 @@ public class NameSurferGraphExtension extends GCanvas
 	}
 	
 	private void drawDot(double x, double y, int nameOrder, Color color) {
-		int i=10;
+		int i=3;
 		GOval circle=new GOval(x-i,y-i,2*i,2*i);
 		circle.setColor(color);
 		GRect rect=new GRect(x-i,y-i,2*i,2*i);

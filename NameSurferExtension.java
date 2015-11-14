@@ -16,7 +16,7 @@ public class NameSurferExtension extends Program implements NameSurferConstants 
 	 */
 	
 	private JTextField nameField;
-	private NameSurferGraph graph;
+	private NameSurferGraphExtension graph;
 	
 /* Method: init() */
 /**
@@ -25,7 +25,7 @@ public class NameSurferExtension extends Program implements NameSurferConstants 
  */
 	public void init() {
 		nameField=new JTextField(20);
-		graph=new NameSurferGraph();
+		graph=new NameSurferGraphExtension();
 		
 		add(graph);
 		add(new JLabel("Name"), NORTH);
