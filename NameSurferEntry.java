@@ -48,7 +48,7 @@ public class NameSurferEntry implements NameSurferConstants {
  * not appear in a decade, the rank value is 0.
  */
 	public int getRank(int decade) {
-		return Integer.parseInt(entry.get(decade+1));
+		return Integer.parseInt(entry.get(decade));
 	}
 
 /* Method: toString() */
@@ -59,7 +59,7 @@ public class NameSurferEntry implements NameSurferConstants {
 	public String toString() {
 		String rank="";
 		for(int i=1; i<entry.size(); i++) {
-			rank+=entry.get(i);
+			rank+=entry.get(i)+" ";
 		}
 		return entry.get(0)+" ["+rank+"]";
 	}
