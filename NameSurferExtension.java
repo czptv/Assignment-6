@@ -33,7 +33,6 @@ public class NameSurferExtension extends Program implements NameSurferConstants 
 		nameField.setActionCommand("Graph");
 		nameField.addActionListener(this);
 		add(new JButton("Graph"),NORTH);
-		add(new JButton("Delete"),NORTH);
 		add(new JButton("Clear"),NORTH);
 		
 		addActionListeners();
@@ -55,9 +54,6 @@ public class NameSurferExtension extends Program implements NameSurferConstants 
 		} else if(cmd.equals("Clear")) {
 			graph.clear();
 			graph.update();
-		} else if(cmd.equals("Delete")) {
-			graph.delete();
-			graph.update();
-		}
+		} 
 	}
 }
