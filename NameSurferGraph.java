@@ -16,12 +16,6 @@ import java.awt.*;
 
 public class NameSurferGraph extends GCanvas
 	implements NameSurferConstants, ComponentListener {
-
-	/**
-	 * constants
-	 */
-	
-	private static final int space=20;
 	
 	/**
 	 * instance variables
@@ -43,14 +37,14 @@ public class NameSurferGraph extends GCanvas
 	 */
 	private void initialize() {
 		//draw lines
-		double col=getWidth()/11;
+		double col=getWidth()/NDECADES;
 		//vertical lines
-		for (int i=1; i<11;i++) {
+		for (int i=1; i<NDECADES;i++) {
 			add(new GLine(col*i,0,col*i,getHeight()));
 		}
 		//horizontal lines
-		add(new GLine(0,space,getWidth(),space));
-		add(new GLine(0,getHeight()-space,getWidth(),getHeight()-space));
+		add(new GLine(0,GRAPH_MARGIN_SIZE,getWidth(),GRAPH_MARGIN_SIZE));
+		add(new GLine(0,getHeight()-GRAPH_MARGIN_SIZE,getWidth(),getHeight()-GRAPH_MARGIN_SIZE));
 		
 		//draw labels
 		add(new GLabel("1900",0,getHeight()));
@@ -98,15 +92,15 @@ public class NameSurferGraph extends GCanvas
 	public void update() {
 		removeAll();
 		initialize();
-		double col=getWidth()/11;
-		double unit=(getHeight()-2*space)/1000.0;
+		double col=getWidth()/NDECADES;
+		double unit=(getHeight()-2*GRAPH_MARGIN_SIZE)/MAX_RANK;
 		for (int i=0; i<names.size();i++) { //for names
-			for (int j=1; j<11;j++) { //for decade
+			for (int j=1; j<NDECADES;j++) { //for decade
 				drawLabelAndLine(i,j,unit,col,getColor(i));
 			}
 			//draw the last label
-			double y=checkRank(i,11,unit);
-			drawLabel(col*10,y,i,11,getColor(i));
+			double y=checkRank(i,NDECADES,unit);
+			drawLabel(col*10,y,i,NDECADES,getColor(i));
 		}
 	}
 	
@@ -158,9 +152,9 @@ public class NameSurferGraph extends GCanvas
 		double rank=names.get(nameOrder).getRank(decadeOrder);
 		double y;
 		if (rank!=0) {
-			y=space+unit*rank;
+			y=GRAPH_MARGIN_SIZE+unit*rank;
 		} else {
-			y=getHeight()-space;
+			y=getHeight()-GRAPH_MARGIN_SIZE;
 		}
 		return y;
 	}
