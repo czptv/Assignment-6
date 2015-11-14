@@ -82,7 +82,9 @@ public class NameSurferGraph extends GCanvas
 	* simply stores the entry; the graph is drawn by calling update.
 	*/
 	public void addEntry(NameSurferEntry entry) {
-		names.add(entry);
+		if (entry!=null) {
+			names.add(entry);
+		}
 	}
 	
 	
