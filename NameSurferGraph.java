@@ -146,7 +146,7 @@ public class NameSurferGraph extends GCanvas
 	/**
 	 * draw Label
 	 * @param x: x parameter of the label
-	 * @param y: relative to y parameter of the label
+	 * @param y: y parameter of the label
 	 * @param nameOrder: order of name in the ArrayList
 	 * @param decadeOrder: the decade away from the starting decade
 	 */
@@ -158,7 +158,7 @@ public class NameSurferGraph extends GCanvas
 		} else {
 			label=new GLabel(names.get(nameOrder).getName()+" "+names.get(nameOrder).getRank(decadeOrder));
 		}
-		add(label,x,y-label.getAscent());
+		add(label,x,y);
 	}
 	
 	/* Implementation of the ComponentListener interface */
