@@ -224,13 +224,15 @@ public class NameSurferGraphExtension extends GCanvas
 	 */
 	
 	private void adjustFont(GLabel label) {
-		int font=20;
 		double col=getWidth()/11;
-		while (label.getWidth()>col) {
-			font--;
-		}
-		String fontSet="Times-"+Integer.toString(font);
-		label.setFont(fontSet);
+		if (col>30) {
+			label.setFont("Times-20");
+		} else if (col>20) {
+			label.setFont("Times-15");
+		} else if (col>10) {
+			label.setFont("Times-10");
+		} else
+			label.setFont("Times-5");
 	}
 	
 	
