@@ -214,7 +214,7 @@ public class NameSurferGraphExtension extends GCanvas
 			label=new GLabel(names.get(nameOrder).getName()+" "+names.get(nameOrder).getRank(decadeOrder));
 		}
 		label.setColor(color);
-		//adjustFont(label);
+		adjustFont(label);
 		highlightRank(nameOrder, decadeOrder, label);
 		add(label,x,y);
 	}
@@ -222,20 +222,21 @@ public class NameSurferGraphExtension extends GCanvas
 	/**
 	 * adjust the font as user adjust the window size
 	 */
-	/*
+	
 	private void adjustFont(GLabel label) {
-		double font=12;
-		double col=getWidth()/11;
+		int font=12;
+		/*double col=getWidth()/11;
 		for (double i=0; i<20; i+=0.1) {
 			if (label.getWidth()<col && label.getWidth()>col-5) {
 				font=i;
 				break;
 			}
-		}
-		String fontSize=Double.toString(font);
+		}*/
+		String fontSize=Integer.toString(font);
 		label.setFont("Times-"+fontSize);
 	}
-	*/
+	
+	
 	/**
 	 * highlight highest and lowest rank
 	 */
