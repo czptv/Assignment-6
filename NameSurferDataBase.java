@@ -11,6 +11,7 @@
 
 import acm.util.*;
 import java.util.*;
+import java.io.*;
 
 public class NameSurferDataBase implements NameSurferConstants {
 	
@@ -22,7 +23,15 @@ public class NameSurferDataBase implements NameSurferConstants {
  * occurs as the file is being read.
  */
 	public NameSurferDataBase(String filename) {
-		// You fill this in //
+		try {
+			BufferedReader rd=new BufferedReader(new FileReader(filename));
+			while (true) {
+				String line=rd.readLine();
+				
+			}
+		} catch (IOException ex) {
+			
+		}
 	}
 	
 /* Method: findEntry(name) */
