@@ -102,7 +102,7 @@ public class NameSurferGraphExtension extends GCanvas
 		removeAll();
 		initialize();
 		double col=getWidth()/NDECADES;
-		double unit=(getHeight()-2*GRAPH_MARGIN_SIZE)/MAX_RANK;
+		double unit=(getHeight()-2*GRAPH_MARGIN_SIZE)/1000.0;
 		for (int i=0; i<names.size();i++) { //for names
 			for (int j=1; j<NDECADES;j++) { //for decade
 				drawLabelDotAndLine(i,j,unit,col,getColor(i));
