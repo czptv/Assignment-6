@@ -126,11 +126,11 @@ public class NameSurferGraph extends GCanvas
 				add(new GLine(x1,y1,x2,y2));
 				//draw label
 				GLabel label=new GLabel(names.get(i).getName()+" "+names.get(i).getRank(j));
-				add(label,x1,y1-label.getHeight());
+				add(label,x1,y1-label.getAscent());
 			}
 			//draw the last label
 			GLabel label=new GLabel(names.get(1).getName()+" "+names.get(i).getRank(11));
-			add(label,col*10,space+unit*names.get(i).getRank(11)-label.getHeight());
+			add(label,col*10,space+unit*names.get(i).getRank(11)-label.getAscent());
 		}
 	}
 	
