@@ -86,10 +86,11 @@ public class NameSurferGraphExtension extends GCanvas
 	 */
 	
 	private int maintainColor(int i) {
+		int order=i;
 		if (delete()==true) {
-			i+=1;
+			order+=1;
 		}
-		return i;
+		return order;
 	}
 	
 	/**
