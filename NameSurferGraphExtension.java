@@ -32,15 +32,18 @@ public class NameSurferGraphExtension extends GCanvas
 	/**
 	* Creates a new NameSurferGraph object that displays the data.
 	*/
+	
 	public NameSurferGraphExtension() {
 		addComponentListener(this);
 		names = new ArrayList<NameSurferEntry>();
 		initialize();
 	}
 	
+	
 	/**
 	 * initialize the grids and labels of years in the graph
 	 */
+	
 	private void initialize() {
 		//draw lines
 		double col=getWidth()/11;
@@ -65,9 +68,11 @@ public class NameSurferGraphExtension extends GCanvas
 		add(new GLabel("1990",col*9,getHeight()));
 		add(new GLabel("2000",col*10,getHeight()));
 	}
+	
 	/**
 	* Clears the list of name surfer entries stored inside this class.
 	*/
+	
 	public void clear() {
 		while(!names.isEmpty()) {
 			names.remove(0);
@@ -95,6 +100,7 @@ public class NameSurferGraphExtension extends GCanvas
 	* calling either clear or addEntry; update is also called whenever
 	* the size of the canvas changes.
 	*/
+	
 	public void update() {
 		removeAll();
 		initialize();
@@ -102,7 +108,7 @@ public class NameSurferGraphExtension extends GCanvas
 		double unit=(getHeight()-2*space)/1000.0;
 		for (int i=0; i<names.size();i++) { //for names
 			for (int j=1; j<11;j++) { //for decade
-				drawLabelAndLine(i,j,unit,col,getColor(i));
+				drawLabelDotAndLine(i,j,unit,col,getColor(i));
 			}
 			//draw the last label
 			double y=checkRank(i,11,unit);
@@ -115,6 +121,7 @@ public class NameSurferGraphExtension extends GCanvas
 	 * @param order: the place this entry is in the ArrayList
 	 * @return the color of the line and the labels
 	 */
+	
 	private Color getColor(int order) {
 		Color color;
 		if (order%4==0) {
@@ -133,19 +140,40 @@ public class NameSurferGraphExtension extends GCanvas
 	 * draw label and lines
 	 */
 	
-	private void drawLabelAndLine(int nameOrder, int decadeOrder, double unit, double col, Color color) {
-		//draw line
+	private void drawLabelDotAndLine(int nameOrder, int decadeOrder, double unit, double col, Color color) {
+		//variables
 		double x1=col*(decadeOrder-1);
 		double x2=col*decadeOrder;
 		double y1=checkRank(nameOrder, decadeOrder, unit);
 		double y2=checkRank(nameOrder, decadeOrder+1, unit);
+		//draw line
 		GLine line=new GLine(x1,y1,x2,y2);
 		line.setColor(color);
 		add(line);
+		//draw dots
+		drawDot(x1,y1,nameOrder,color);
 		//draw label
 		drawLabel(x1, y1, nameOrder, decadeOrder, color);
 	}
 	
+	private void drawDot(double x, double y, int nameOrder, Color color) {
+		int i=3;
+		GOval circle=new GOval(x-i,y-i,2*i,2*i);
+		circle.setColor(color);
+		GRect rect=new GRect(x-i,y-i,2*i,2*i);
+		rect.setColor(color);
+		if (nameOrder%4==0) {
+			circle.setFilled(true);
+			add (circle);
+		} else if (nameOrder%4==1) {
+			add (circle);
+		} else if (nameOrder%4==2) {
+			rect.setFilled(true);
+			add (rect);
+		} else {
+			add(rect);
+		}
+	}
 	/**
 	 * check whether the rank is 0
 	 * @param nameOrder: order of name in the ArrayList
